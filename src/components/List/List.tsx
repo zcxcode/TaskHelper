@@ -1,13 +1,20 @@
-import { useState, useEffect } from "react";
-import ListScripts from "./scripts";
+import Task from "../Task";
+import { TaskItem } from "../../App";
 
 interface ListProps {
-  list: string[];
-  setList: Function;
+  list: TaskItem[];
 }
 
-const List = () => {
-  return <div className="list">111</div>;
+const List = ({ list }: ListProps) => {
+  let count = 1;
+
+  return (
+    <ul className="list">
+      {list.map((i) => {
+        return <Task counter={count++} task={i} />;
+      })}
+    </ul>
+  );
 };
 
 export default List;

@@ -19,15 +19,22 @@ const Button = ({ setList }: ButtonProps) => {
   const clickButton = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
-    setList((prev: string[]) => [...prev, input]);
+    const newTask = {
+      text: input,
+      done: false,
+      id: Math.random()
+    };
+    setList((prev: string[]) => [...prev, newTask]);
     setInput("");
   };
 
   return (
-    <>
+    <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input className="input" onChange={changeInput} value={input} />
-      <button onClick={clickButton}>{buttonText}</button>
-    </>
+      <button className="button" onClick={clickButton}>
+        {buttonText}
+      </button>
+    </form>
   );
 };
 
