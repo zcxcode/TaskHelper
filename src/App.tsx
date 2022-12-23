@@ -9,12 +9,12 @@ export interface TaskItem {
   id: number;
 }
 
+// Провайдер функции обновления таск листа
 export const StateContext = createContext<any>(null);
 
 function App() {
   // Основной стейт таск листа.
   const [getTodos, setTodos] = useState<TaskItem[]>([]);
-  // Провайдер функции обновления таск листа
 
   return (
     <div className="App">

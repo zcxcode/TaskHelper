@@ -1,0 +1,9 @@
+.task {
+  &--done {
+    color: green;
+  }
+
+  &--active {
+    color: red;
+  }
+}
