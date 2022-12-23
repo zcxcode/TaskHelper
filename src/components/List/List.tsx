@@ -11,7 +11,7 @@ const List = ({ list }: ListProps) => {
   return (
     <ul className="list">
       {list.map((i) => {
-        return <Task counter={count++} task={i} />;
+        return <Task key={i.id} counter={count++} task={i}/>;
       })}
     </ul>
   );

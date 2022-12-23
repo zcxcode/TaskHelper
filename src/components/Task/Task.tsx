@@ -6,9 +6,12 @@ interface TextProps {
 }
 
 const Task = ({ counter, task }: TextProps) => {
+  const deleteButtonText = "Удалить задачу";
+
   return (
-    <li className={task.done === false ? "InProgress" : "Done"}>
-      {counter}. {task.text}
+    <li className={task.done === false ? "task--active" : "task--done"}>
+      <span>{counter}. {task.text}</span>
+      <button className="task__delete-button">{deleteButtonText}</button>
     </li>
   );
 };
