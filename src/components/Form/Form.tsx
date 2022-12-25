@@ -1,41 +1,48 @@
 import React, { useState } from "react";
+import "./Form.style.scss";
 
 interface ButtonProps {
   setList: Function;
 }
 
-const Button = ({ setList }: ButtonProps) => {
+const Form = ({ setList }: ButtonProps) => {
   // State для инпута
   const [input, setInput] = useState("");
   // Текст для кнопки ввода
   const buttonText: string = "Добавить задачу";
+  // Текст сообщения об ошибке
+  const errormsg: string = "Введите текст задачи";
 
   // Обработчик события инпута. Добавление в стейт
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
   };
 
-  // Обработчик события клика. Передача в setListи очистка инпута
-  const clickButton = (
+  // Добавление задачи и очистка инпута.
+  const addTask = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
-    const newTask = {
-      text: input,
-      done: false,
-      id: Math.random()
-    };
-    setList((prev: string[]) => [...prev, newTask]);
-    setInput("");
+    if (!input) {
+      alert(errormsg);
+    } else {
+      const newTask = {
+        text: input,
+        done: false,
+        id: Math.random()
+      };
+      setList((prev: string[]) => [...prev, newTask]);
+      setInput("");
+    }
   };
 
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
-      <input className="input" onChange={changeInput} value={input} />
-      <button className="button" onClick={clickButton}>
+      <input className="form__input" onChange={changeInput} value={input} />
+      <button className="form__button" onClick={addTask}>
         {buttonText}
       </button>
     </form>
   );
 };
 
-export default Button;
+export default Form;

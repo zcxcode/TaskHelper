@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__input {
+    margin-bottom: 15px;
+  }
+
+  &__button {}
+}

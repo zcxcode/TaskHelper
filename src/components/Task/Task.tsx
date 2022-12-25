@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { StateContext } from "../../App";
-import { TaskItem } from "../../App";
+import { StateContext, TaskItem } from "../../App";
 import "./Task.style.scss";
 
 interface TextProps {
@@ -10,11 +9,10 @@ interface TextProps {
 
 const Task = ({ counter, task }: TextProps) => {
   const deleteButtonText = "Удалить задачу";
-  const state = useContext(StateContext);
-  const { getTodos, setTodos } = state;
+  const { getTodos, setTodos } = useContext(StateContext);
 
   const removeTask = (id: number) => {
-    setTodos(() => getTodos.filter((item: TaskItem) => item.id != id));
+    setTodos(() => getTodos.filter((item: TaskItem) => item.id !== id));
   };
 
   const changeTaskStatus = (id: number) => {
@@ -29,26 +27,31 @@ const Task = ({ counter, task }: TextProps) => {
   };
 
   return (
-    <li className={task.done === false ? "task--active" : "task--done"}>
-      <span>
-        {counter}. {task.text}
-      </span>
-      <button
-        className="task__delete-button"
-        onClick={() => {
-          removeTask(task.id);
-        }}
-      >
-        {deleteButtonText}
-      </button>
-      <button
-        className="task__change-status"
-        onClick={() => {
-          changeTaskStatus(task.id);
-        }}
-      >
-        Пометить как {task.done === false ? "выполненное" : "невыполненное"}
-      </button>
+    <li className="task">
+      <div className="task__text">
+        <span className="task__number">{counter}.</span>
+        <span className={task.done === false ? "task__active" : "task__done"}>
+          {task.text}
+        </span>
+      </div>
+      <div className="task__buttons">
+        <button
+          className="task__delete-button"
+          onClick={() => {
+            removeTask(task.id);
+          }}
+        >
+          {deleteButtonText}
+        </button>
+        <button
+          className="task__change-status"
+          onClick={() => {
+            changeTaskStatus(task.id);
+          }}
+        >
+          Пометить как {task.done === false ? "выполненное" : "невыполненное"}
+        </button>
+      </div>
     </li>
   );
 };

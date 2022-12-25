@@ -1,9 +1,63 @@
+$task-size: 2vw;
+$number-size: 2.5vw;
+
 .task {
-  &--done {
-    color: green;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  list-style: none;
+  font-family: sans-serif;
+  animation: task-add 1s ease forwards;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
   }
 
-  &--active {
-    color: red;
+  &__text {
+    font-size: $task-size;
+  }
+
+  &__number {
+    margin-right: 10px;
+    font-size: $number-size;
+    color: white;
+  }
+
+  &__done,
+  &__active {
+    transition: all 1s ease;
+  }
+
+  &__done {
+    text-decoration: line-through;
+    color: #d8f2ea;
+  }
+
+  &__active {
+    color: #fcbcbc;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__delete-button {
+    min-width: 150px;
+    margin-right: 15px;
+  }
+
+  &__change-status {
+    min-width: 150px;
+  }
+}
+
+@keyframes task-add {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 300px;
   }
 }
