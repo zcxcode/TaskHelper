@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Task from "../Task";
 import { TaskItem } from "../../App";
 import "./List.style.scss";
@@ -7,10 +8,11 @@ interface ListProps {
 }
 
 const List = ({ list }: ListProps) => {
+  const [drag, setDrag] = useState<TaskItem>()
   let count = 1;
   
   const arr = list.map((i) => {
-    return <Task key={i.id} counter={count++} task={i} />;
+    return <Task key={i.id} counter={count++} task={i} funcs={{drag, setDrag}}/>;
   })
   
   return (

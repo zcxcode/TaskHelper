@@ -5,11 +5,15 @@ import "./Task.style.scss";
 interface TextProps {
   counter: number;
   task: TaskItem;
+  funcs: {
+    drag: TaskItem | undefined;
+    setDrag: Function;
+  };
 }
 
-const Task = ({ counter, task }: TextProps) => {
-  const deleteButtonText = "Удалить задачу";
+const Task = ({ counter, task, funcs }: TextProps) => {
   const { getTodos, setTodos } = useContext(StateContext);
+  const { drag, setDrag } = funcs;
 
   const removeTask = (id: number) => {
     setTodos(() => getTodos.filter((item: TaskItem) => item.id !== id));
@@ -29,13 +33,15 @@ const Task = ({ counter, task }: TextProps) => {
   const dragStartHandler = (
     e: React.DragEvent<HTMLLIElement>,
     task: TaskItem
-  ) => {};
+  ) => {
+    setDrag(task);
+  };
 
   const dragEndHandler = (e: React.DragEvent<HTMLLIElement>) => {
     const target = e.target as HTMLElement;
     if (target.closest(".task")) {
-      const parent = target.closest(".task") as HTMLElement;
-      parent.style.border = "none";
+      const task = target.closest(".task") as HTMLElement;
+      task.style.border = "none";
     }
   };
 
@@ -43,13 +49,19 @@ const Task = ({ counter, task }: TextProps) => {
     e.preventDefault();
     const target = e.target as HTMLElement;
     if (target.closest(".task")) {
-      const parent = target.closest(".task") as HTMLElement;
-      parent.style.border = "1px solid white";
+      const task = target.closest(".task") as HTMLElement;
+      task.style.border = "1px solid white";
     }
   };
-  
+
   const dropHandler = (e: React.DragEvent<HTMLLIElement>, task: TaskItem) => {
     e.preventDefault();
+    const todos = [...getTodos];
+    const lastIndex = todos.indexOf(drag);
+    const newIndex = todos.indexOf(task);
+    todos[lastIndex] = task;
+    todos[newIndex] = drag;
+    setTodos(todos);
   };
 
   return (
@@ -85,7 +97,7 @@ const Task = ({ counter, task }: TextProps) => {
             removeTask(task.id);
           }}
         >
-          {deleteButtonText}
+          Удалить задачу
         </button>
         <button
           className="task__change-status"

@@ -8,10 +8,6 @@ interface ButtonProps {
 const Form = ({ setList }: ButtonProps) => {
   // State для инпута
   const [input, setInput] = useState("");
-  // Текст для кнопки ввода
-  const buttonText: string = "Добавить задачу";
-  // Текст сообщения об ошибке
-  const errormsg: string = "Введите текст задачи";
 
   // Обработчик события инпута. Добавление в стейт
   const changeInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -22,6 +18,8 @@ const Form = ({ setList }: ButtonProps) => {
   const addTask = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
+    const errormsg: string = "Введите текст задачи";
+
     if (!input) {
       alert(errormsg);
     } else {
@@ -39,7 +37,7 @@ const Form = ({ setList }: ButtonProps) => {
     <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input className="form__input" onChange={changeInput} value={input} />
       <button className="form__button" onClick={addTask}>
-        {buttonText}
+        Добавить задачу
       </button>
     </form>
   );
