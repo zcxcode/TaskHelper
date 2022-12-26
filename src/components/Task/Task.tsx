@@ -26,8 +26,52 @@ const Task = ({ counter, task }: TextProps) => {
     setTodos(modifyTodos);
   };
 
+  const dragStartHandler = (
+    e: React.DragEvent<HTMLLIElement>,
+    task: TaskItem
+  ) => {};
+
+  const dragEndHandler = (e: React.DragEvent<HTMLLIElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.closest(".task")) {
+      const parent = target.closest(".task") as HTMLElement;
+      parent.style.border = "none";
+    }
+  };
+
+  const dragOverHandler = (e: React.DragEvent<HTMLLIElement>) => {
+    e.preventDefault();
+    const target = e.target as HTMLElement;
+    if (target.closest(".task")) {
+      const parent = target.closest(".task") as HTMLElement;
+      parent.style.border = "1px solid white";
+    }
+  };
+  
+  const dropHandler = (e: React.DragEvent<HTMLLIElement>, task: TaskItem) => {
+    e.preventDefault();
+  };
+
   return (
-    <li className="task">
+    <li
+      className="task"
+      draggable={true}
+      onDragStart={(e) => {
+        dragStartHandler(e, task);
+      }}
+      onDragLeave={(e) => {
+        dragEndHandler(e);
+      }}
+      onDragEnd={(e) => {
+        dragEndHandler(e);
+      }}
+      onDragOver={(e) => {
+        dragOverHandler(e);
+      }}
+      onDrop={(e) => {
+        dropHandler(e, task);
+      }}
+    >
       <div className="task__text">
         <span className="task__number">{counter}.</span>
         <span className={task.done === false ? "task__active" : "task__done"}>
