@@ -8,7 +8,7 @@ interface ListProps {
 }
 
 const List = ({ list }: ListProps) => {
-  const [drag, setDrag] = useState<TaskItem>()
+  const [drag, setDrag] = useState<any>()
   let count = 1;
   
   const arr = list.map((i) => {
