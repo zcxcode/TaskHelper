@@ -26,7 +26,7 @@ const Form = ({ setList }: ButtonProps) => {
       const newTask = {
         text: input,
         done: false,
-        id: Math.random()
+        id: Date.now()
       };
       setList((prev: string[]) => [...prev, newTask]);
       setInput("");

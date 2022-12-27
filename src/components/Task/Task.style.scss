@@ -4,6 +4,7 @@ $number-size: 2.5vw;
 .task {
   display: flex;
   flex-direction: column;
+  max-width: 300px;
   padding: 4px;
   overflow: hidden;
   list-style: none;
@@ -14,6 +15,8 @@ $number-size: 2.5vw;
   }
 
   &__text {
+    margin-right: auto;
+    text-align: left;
     font-size: $task-size;
   }
 
