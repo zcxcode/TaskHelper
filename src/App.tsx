@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import TaskPage from "./Pages/TaskPage";
 import TimerPage from "./Pages/TmerPage";
 
-
 export interface TaskItem {
   text: string;
   done: boolean;

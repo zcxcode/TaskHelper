@@ -4,13 +4,16 @@ import "./Timer.style.scss";
 
 const Timer = () => {
   const [getTimer, setTimer] = useContext(StateContext).timer;
-  const input = useRef<HTMLInputElement>(null);
+  const inputSeconds = useRef<HTMLInputElement>(null);
+  const inputMinutes = useRef<HTMLInputElement>(null);
   const interval: MutableRefObject<any> = useRef(null);
 
   const startTimer = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const value: string | undefined = input.current?.value;
+    const seconds: number = +inputSeconds.current!.value;
+    const minutes: number = +inputMinutes.current!.value * 60;
+    const summary = seconds + minutes;
 
-    value?.match(/\d+/) ? setTimer(+value) : alert("Введите число");
+    summary.toString().match(/\d+/) ? setTimer(summary) : alert("Введите число");
 
     interval.current = setInterval(() => {
       setTimer((prev: number) => {
@@ -38,7 +41,8 @@ const Timer = () => {
         {getTimer % 60}
       </span>
 
-      <input className="timer__input" type="number" ref={input} />
+      <input className="timer__input" type="number" ref={inputMinutes} placeholder="Минуты"/>
+      <input className="timer__input" type="number" ref={inputSeconds} placeholder="Секунды"/>
 
       <button className="timer__start" onClick={startTimer}>
         Запустить
