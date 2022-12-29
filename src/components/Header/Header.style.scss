@@ -1,0 +1,25 @@
+.header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgb(111 111 111 / 0.75);
+
+  &__title {
+    text-align: center;
+  }
+
+  &__navigation-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__navigation-item {
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+    padding: 10px;
+    border: 2px solid #c1c1c1;
+  }
+}
