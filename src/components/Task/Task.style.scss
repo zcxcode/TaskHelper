@@ -1,5 +1,11 @@
-$task-size: 2vw;
-$number-size: 2.5vw;
+:root {
+  --task-size: 2vw;
+  --number-size: 2.5vw;
+  --task-done-color: #d8f2ea;
+  --task-active-color: #fcbcbc;
+  --task-change-status-transition: all 1s ease;
+  --task-bottom-margin: 10px;
+}
 
 .task {
   display: flex;
@@ -11,33 +17,33 @@ $number-size: 2.5vw;
   font-family: sans-serif;
 
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: var(--task-bottom-margin);
   }
 
   &__text {
     margin-right: auto;
     text-align: left;
-    font-size: $task-size;
+    font-size: var(--task-size);
   }
 
   &__number {
     margin-right: 10px;
-    font-size: $number-size;
+    font-size: var(--number-size);
     color: white;
   }
 
   &__done,
   &__active {
-    transition: all 1s ease;
+    transition: var(--task-change-status-transition);
   }
 
   &__done {
     text-decoration: line-through;
-    color: #d8f2ea;
+    color: var(--task-done-color);
   }
 
   &__active {
-    color: #fcbcbc;
+    color: var(--task-active-color)
   }
 
   &__buttons {

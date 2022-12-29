@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 import "./App.scss";
-import Form from "./components/Form";
-import List from "./components/List";
 import Header from "./components/Header";
-import Timer from "./components/Timer";
+import TaskPage from "./Pages/TaskPage";
+import TimerPage from "./Pages/TmerPage";
+
 
 export interface TaskItem {
   text: string;
@@ -15,31 +15,37 @@ export interface TaskItem {
 export const StateContext = createContext<any>(null);
 
 function App() {
-  // Основной стейт таск листа.
+  // Стейт таск листа.
   const [getTodos, setTodos] = useState<TaskItem[]>([]);
+  // Стейт таймера.
+  const [getTimer, setTimer] = useState<number>(0);
   // Стейт окна
   const [getSwitcher, setSwitcher] = useState<string>("Task");
 
-  const stateTask = (
-    <>
-      <List list={getTodos} />
-      <Form setList={setTodos} />
-    </>
-  );
+  // Функция переключения окна
+  const switchWindow = (url: string) => {
+    switch (url) {
+      case "Task":
+        return <TaskPage />;
+        break;
+      case "Timer":
+        return <TimerPage />;
+        break;
+    }
+  };
 
-  const stateTimer = (
-    <>
-      <Timer />
-    </>
-  )
+  // Объект пропсов
+  const props = {
+    todos: [getTodos, setTodos],
+    timer: [getTimer, setTimer],
+    switcher: [getSwitcher, setSwitcher]
+  };
 
   return (
     <div className="App">
-      <StateContext.Provider
-        value={{ getTodos, setTodos, getSwitcher, setSwitcher }}
-      >
+      <StateContext.Provider value={props}>
         <Header />
-        <div className="wrapper">{getSwitcher === "Task" ? stateTask : stateTimer}</div>
+        <div className="wrapper">{switchWindow(getSwitcher)}</div>
       </StateContext.Provider>
     </div>
   );

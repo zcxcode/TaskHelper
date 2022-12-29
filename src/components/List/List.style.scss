@@ -7,10 +7,10 @@
   margin: 0 auto;
   padding-top: 30px;
   padding-bottom: 30px;
-  border: 2px solid #c1c1c1;
+  border: 2px solid var(--color-gray);
   border-radius: 15px;
 
   &__empty {
-    color: #fff;
+    color: var(--color-light);
   }
 }

@@ -13,7 +13,7 @@ interface TextProps {
 }
 
 const Task = ({ counter, task, funcs }: TextProps) => {
-  const { getTodos, setTodos } = useContext(StateContext);
+  const [ getTodos, setTodos ] = useContext(StateContext).todos;
   const { drag, setDrag } = funcs;
   const {
     removeTask,

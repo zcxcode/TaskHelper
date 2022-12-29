@@ -41,7 +41,7 @@ const taskFunctions = (
     const target = e.target as HTMLElement;
     if (target.closest(".task")) {
       const task = target.closest(".task") as HTMLElement;
-      task.style.boxShadow = "0 0 5px 5px #c1c1c1";
+      task.style.boxShadow = "0 0 5px 5px var(--color-gray)";
     }
   };
 

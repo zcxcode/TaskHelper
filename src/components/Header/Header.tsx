@@ -1,9 +1,9 @@
-import "./Header.style.scss";
-import { StateContext } from "../../App";
 import { useContext } from "react";
+import { StateContext } from "../../App";
+import "./Header.style.scss";
 
 const Header = () => {
-  const { setSwitcher } = useContext(StateContext);
+  const [getSwitcher, setSwitcher] = useContext(StateContext).switcher;
 
   const switchPage = (e: React.MouseEvent<HTMLAnchorElement>) => {
     setSwitcher((e.target as HTMLElement).dataset.switcher);

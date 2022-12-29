@@ -1,19 +1,31 @@
 @import-normalize;
 
+:root {
+  --color-background: radial-gradient(
+    79.74% 79.74% at 50% 50%,
+    rgba(216, 242, 234, 0.35) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  --color-light: #ffffff;
+  --color-dark: #000000;
+  --color-gray: #c1c1c1;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+input:active,
+input:focus {
+  outline: none;
+}
+
 .App {
   min-height: 100vh;
-  background: radial-gradient(
-    79.74% 79.74% at 50% 50%,
-    rgba(216, 242, 234, 0.35) 0%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
-  background-color: #000;
+  background: var(--color-background);
+  background-color: var(--color-dark);
 }
 
 .wrapper {
