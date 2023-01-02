@@ -5,7 +5,7 @@ const TimerPage = () => {
     <div className="timer__container">
       <Timer />
     </div>
-  )
-}
+  );
+};
 
 export default TimerPage;

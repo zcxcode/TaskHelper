@@ -1,14 +1,51 @@
 :root {
-  --timer-font-size: calc(1vw * 2.5);
+  --timer-font-size: 40px;
+  --timer-margin-bottom: 15px;
+  --timer-input-margin: 15px;
 }
 
 .timer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   &__output {
+    margin-bottom: var(--timer-margin-bottom);
     font-size: var(--timer-font-size);
     color: var(--color-gray);
+  }
+
+  &__input {
+    min-width: var(--elements-width);
+    height: calc(var(--elements-height) - 15px);
+    margin-bottom: var(--timer-input-margin);
+    padding: var(--input-padding);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  &__start,
+  &__stop {
+    justify-content: flex-start;
+    padding-left: 58px;
+    &::after {
+      content: "";
+      margin-left: auto;
+      margin-right: 30px;
+    }
+  }
+
+  &__start {
+    margin-bottom: var(--timer-margin-bottom);
+    &::after {
+      content: "\27A4";
+    }
+  }
+
+  &__stop {
+    &::after {
+      content: "\2716";
+    }
   }
 }

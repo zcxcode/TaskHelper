@@ -41,14 +41,14 @@ const Timer = () => {
         {getTimer % 60}
       </span>
 
-      <input className="timer__input" type="number" ref={inputMinutes} placeholder="Минуты"/>
-      <input className="timer__input" type="number" ref={inputSeconds} placeholder="Секунды"/>
+      <input className="timer__input input" type="number" ref={inputMinutes} placeholder="Минуты"/>
+      <input className="timer__input input" type="number" ref={inputSeconds} placeholder="Секунды"/>
 
-      <button className="timer__start" onClick={startTimer}>
+      <button className="timer__start button" onClick={startTimer}>
         Запустить
       </button>
 
-      <button className="timer__stop" onClick={stopTimer}>
+      <button className="timer__stop button" onClick={stopTimer}>
         Остановить
       </button>
     </div>

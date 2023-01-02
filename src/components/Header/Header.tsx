@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="header__title">This is Header</h1>
+      <h1 className="header__title">Task Helper</h1>
       <nav className="header__navigation">
         <ul className="header__navigation-list">
           <li className="header__navigation-item">
@@ -21,7 +21,7 @@ const Header = () => {
               data-switcher="Task"
               onClick={switchPage}
             >
-              Task Manager
+              Task List
             </a>
           </li>
           <li className="header__navigation-item">

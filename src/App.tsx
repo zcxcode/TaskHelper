@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import "./App.scss";
 import Header from "./components/Header";
 import TaskPage from "./Pages/TaskPage";
-import TimerPage from "./Pages/TmerPage";
+import TimerPage from "./Pages/TimerPage";
 
 export interface TaskItem {
   text: string;

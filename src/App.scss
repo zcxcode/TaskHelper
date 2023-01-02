@@ -9,21 +9,19 @@
   --color-light: #ffffff;
   --color-dark: #000000;
   --color-gray: #c1c1c1;
+  --elements-width: 250px;
+  --elements-height: 40px;
+  --input-padding: 5px 30px 5px 5px;
+  --button-font-size: 16px;
+  --button-line-height: 19px;
+  --button-font-color: #cacaca;
+  --button-background: rgba(37, 52, 104, 0.74);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-input {
-  border: none;
-}
-
-input:active,
-input:focus {
-  outline: none;
 }
 
 a {
@@ -33,14 +31,51 @@ a {
 
 .App {
   min-height: 100vh;
+  font-family: sans-serif;
   background: var(--color-background);
   background-color: var(--color-dark);
 }
 
 .wrapper {
-  max-width: 1400px;
+  max-width: 1440px;
   min-height: 100%;
   margin: 0 auto;
-  padding: 30px;
   overflow: hidden;
+}
+
+.input {
+  min-width: var(--elements-width);
+  height: var(--elements-height);
+  padding: var(--input-padding);
+  border: none;
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 3px var(--color-light);
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: 0 0 3px var(--color-light);
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--elements-width);
+  height: var(--elements-height);
+  background: var(--button-background);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  transition: filter 0.3s ease;
+  border: none;
+  cursor: pointer;
+  color: var(--button-font-color);
+
+  &:hover {
+    filter: drop-shadow(0 0 3px var(--color-light));
+  }
 }

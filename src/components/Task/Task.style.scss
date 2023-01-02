@@ -8,11 +8,12 @@
 }
 
 .task {
+  position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 300px;
+  width: 100%;
   padding: 4px;
-  overflow: hidden;
+  overflow: visible;
   list-style: none;
   font-family: sans-serif;
 
@@ -23,6 +24,7 @@
   &__text {
     margin-right: auto;
     text-align: left;
+    overflow-wrap: anywhere;
     font-size: var(--task-size);
   }
 
@@ -43,20 +45,30 @@
   }
 
   &__active {
-    color: var(--task-active-color)
+    color: var(--task-active-color);
   }
 
   &__buttons {
-    display: flex;
-    justify-content: center;
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    right: -90px;
+    transform: translateY(-50%);
+  }
+
+  &__delete-button,
+  &__change-status {
+    cursor: pointer;
+    border: 0;
+    background: none;
   }
 
   &__delete-button {
-    min-width: 130px;
+    min-width: 30px;
     margin-right: 15px;
   }
 
   &__change-status {
-    min-width: 130px;
+    min-width: 30px;
   }
 }

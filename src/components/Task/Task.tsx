@@ -13,7 +13,7 @@ interface TextProps {
 }
 
 const Task = ({ counter, task, funcs }: TextProps) => {
-  const [ getTodos, setTodos ] = useContext(StateContext).todos;
+  const [getTodos, setTodos] = useContext(StateContext).todos;
   const { drag, setDrag } = funcs;
   const {
     removeTask,
@@ -53,19 +53,21 @@ const Task = ({ counter, task, funcs }: TextProps) => {
       <div className="task__buttons">
         <button
           className="task__delete-button"
+          title="Удалить задачу"
           onClick={() => {
             removeTask(task.id);
           }}
         >
-          Удалить задачу
+          &#10060;
         </button>
         <button
           className="task__change-status"
+          title="Изменить статус"
           onClick={() => {
             changeTaskStatus(task.id);
           }}
         >
-          Пометить как {task.done === false ? "выполненное" : "невыполненное"}
+          {task.done === false ? <>&#9989;</> : <>&#10062;</>}
         </button>
       </div>
     </li>

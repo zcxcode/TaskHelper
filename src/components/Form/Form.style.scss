@@ -1,11 +1,9 @@
 :root {
-  --form-padding: 30px;
-  --input-padding: 5px 30px 5px 5px;
-  --button-font-size: 16px;
-  --button-line-height: 19px;
-  --button-font-color: #cacaca;
-  --button-background: linear-gradient(90deg, #303a5e 0%, #897bda 100%);
+  --form-padding: 25px;
+  --form-input-margin: 15px
 }
+
+
 
 .form {
   display: flex;
@@ -16,32 +14,6 @@
   padding-bottom: var(--form-padding);
 
   &__input {
-    margin-bottom: 15px;
-    padding: var(--input-padding);
-    transition: box-shadow 0.3s ease-in-out;
-
-    &:hover {
-      box-shadow: 0 0 3px var(--color-light);
-    }
-
-    &:focus,
-    &:active {
-      box-shadow: 0 0 3px var(--color-light);
-    }
-  }
-
-  &__button {
-    padding: 11px 58px;
-    background: var(--button-background);
-    font-size: var(--button-font-size);
-    line-height: var(--button-line-height);
-    transition: filter .3s ease;
-    border: none;
-    cursor: pointer;
-    color: var(--button-font-color);
-
-    &:hover {
-      filter: drop-shadow(0 0 3px var(--color-light));
-    }
+    margin-bottom: var(--form-input-margin);
   }
 }

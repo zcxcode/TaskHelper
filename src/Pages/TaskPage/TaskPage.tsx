@@ -7,7 +7,7 @@ const TaskPage = () => {
   const [getTodos, setTodos] = useContext(StateContext).todos;
   
   return (
-    <div className="todo__container">
+    <div className="todo__container" style={{ paddingTop: "30px" }}>
       <List list={getTodos} />
       <Form setList={setTodos} />
     </div>

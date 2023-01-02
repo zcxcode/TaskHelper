@@ -35,8 +35,8 @@ const Form = ({ setList }: ButtonProps) => {
 
   return (
     <form className="form" onSubmit={(e) => e.preventDefault()}>
-      <input className="form__input" onChange={changeInput} value={input} />
-      <button className="form__button" onClick={addTask}>
+      <input className="form__input input" onChange={changeInput} placeholder="Введите текст задачи" value={input} />
+      <button className="form__button button" onClick={addTask}>
         Добавить задачу
       </button>
     </form>
